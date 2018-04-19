@@ -10,6 +10,6 @@ import Foundation
 
 extension Array {
     var length: Int {
-        return self.count * MemoryLayout.size(ofValue: self[0])
+        return self.count * MemoryLayout.stride(ofValue: self[0])
     }
 }

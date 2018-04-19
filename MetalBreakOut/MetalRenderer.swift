@@ -23,6 +23,22 @@ class Renderer: NSObject {
         pipelineDescriptor.fragmentFunction = fragmentFunction
         pipelineDescriptor.colorAttachments[0].pixelFormat = .bgra8Unorm
 
+
+        // TODO Refactor this:
+        let vertexDecscriptor = MTLVertexDescriptor()
+        // Describes the position attribute
+        vertexDecscriptor.attributes[0].format = .float3
+        vertexDecscriptor.attributes[0].offset = 0
+        vertexDecscriptor.attributes[0].bufferIndex = 0
+        // Describes the color attribute
+        vertexDecscriptor.attributes[1].format = .float4
+        vertexDecscriptor.attributes[1].offset = MemoryLayout<float3>.stride // is offset from position size
+        vertexDecscriptor.attributes[1].bufferIndex = 0
+
+        // size of the information held for each vertex
+        vertexDecscriptor.layouts[0].stride = MemoryLayout<Vertex>.stride
+
+        pipelineDescriptor.vertexDescriptor = vertexDecscriptor
         do {
             pipelineState = try device.makeRenderPipelineState(descriptor: pipelineDescriptor)
         } catch let error as NSError {

@@ -18,6 +18,5 @@ class Scene: Node {
         self.device = device
         self.size = size
         super.init()
-
     }
 }

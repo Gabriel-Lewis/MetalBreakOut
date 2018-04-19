@@ -20,6 +20,8 @@
 		C0CE7528208921AD00E4CCEE /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0CE7527208921AD00E4CCEE /* Constants.swift */; };
 		C0CE752A208923B600E4CCEE /* Scene.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0CE7529208923B600E4CCEE /* Scene.swift */; };
 		C0CE752C2089250700E4CCEE /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0CE752B2089250700E4CCEE /* GameScene.swift */; };
+		C0CE752E208926E400E4CCEE /* Triangle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0CE752D208926E400E4CCEE /* Triangle.swift */; };
+		C0CE75332089340700E4CCEE /* Vertex.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0CE75322089340700E4CCEE /* Vertex.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +40,8 @@
 		C0CE7527208921AD00E4CCEE /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		C0CE7529208923B600E4CCEE /* Scene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scene.swift; sourceTree = "<group>"; };
 		C0CE752B2089250700E4CCEE /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
+		C0CE752D208926E400E4CCEE /* Triangle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Triangle.swift; sourceTree = "<group>"; };
+		C0CE75322089340700E4CCEE /* Vertex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vertex.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +89,7 @@
 				C07044E62086C9D90080CB22 /* LaunchScreen.storyboard */,
 				C07044E92086C9D90080CB22 /* Info.plist */,
 				C00309F12087BCCD006509BD /* MetalRenderer.swift */,
+				C0CE7531208933F100E4CCEE /* Metal Data Structure */,
 				C0CE75242089217000E4CCEE /* Metal Node */,
 				C0CE751D2087F79500E4CCEE /* Shader.metal */,
 				C00309F32087C594006509BD /* Extension */,
@@ -97,11 +102,20 @@
 			children = (
 				C0CE7521208920DE00E4CCEE /* Node.swift */,
 				C0CE75252089217F00E4CCEE /* Plane.swift */,
-				C0CE7527208921AD00E4CCEE /* Constants.swift */,
+				C0CE752D208926E400E4CCEE /* Triangle.swift */,
 				C0CE7529208923B600E4CCEE /* Scene.swift */,
 				C0CE752B2089250700E4CCEE /* GameScene.swift */,
 			);
 			name = "Metal Node";
+			sourceTree = "<group>";
+		};
+		C0CE7531208933F100E4CCEE /* Metal Data Structure */ = {
+			isa = PBXGroup;
+			children = (
+				C0CE7527208921AD00E4CCEE /* Constants.swift */,
+				C0CE75322089340700E4CCEE /* Vertex.swift */,
+			);
+			name = "Metal Data Structure";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -180,8 +194,10 @@
 				C07044DE2086C9D80080CB22 /* AppDelegate.swift in Sources */,
 				C00309F22087BCCD006509BD /* MetalRenderer.swift in Sources */,
 				C0CE7522208920DE00E4CCEE /* Node.swift in Sources */,
+				C0CE75332089340700E4CCEE /* Vertex.swift in Sources */,
 				C0CE751E2087F79500E4CCEE /* Shader.metal in Sources */,
 				C00309F52087C5AB006509BD /* Array+Extension.swift in Sources */,
+				C0CE752E208926E400E4CCEE /* Triangle.swift in Sources */,
 				C0CE75262089217F00E4CCEE /* Plane.swift in Sources */,
 				C0CE7528208921AD00E4CCEE /* Constants.swift in Sources */,
 				C0CE752A208923B600E4CCEE /* Scene.swift in Sources */,
