@@ -1,43 +1,16 @@
 import MetalKit
 
-struct Constants {
-    var animateBy: Float = 0.0
-}
-
 class Renderer: NSObject {
     let device: MTLDevice
     let commandQueue: MTLCommandQueue
-
-    var vertices: [Float] = [
-        -1,  1, 0,
-        -1, -1, 0,
-         1, -1, 0,
-         1,  1, 0
-    ]
-
-    let indices: [UInt16] = [
-        0, 1, 2,
-        2, 3, 0
-    ]
-
-    var constant = Constants()
-    var time: Float = 0
     var pipelineState: MTLRenderPipelineState?
-    var vertexBuffer: MTLBuffer?
-    var indexBuffer: MTLBuffer?
+    var scene: Scene?
+
     init(device: MTLDevice) {
         self.device = device
         commandQueue = device.makeCommandQueue()!
         super.init()
-        buildModel()
         buildPipelineState()
-    }
-
-    private func buildModel() {
-        vertexBuffer = device.makeBuffer(bytes: vertices,
-                                         length: vertices.length,
-                                         options: [])
-        indexBuffer = device.makeBuffer(bytes: indices, length: indices.count * MemoryLayout<UInt16>.size, options: [])
     }
 
     private func buildPipelineState() {
@@ -64,26 +37,21 @@ extension Renderer: MTKViewDelegate {
     func draw(in view: MTKView) {
         guard let drawable = view.currentDrawable,
             let pipelineState = pipelineState,
-            let descriptor = view.currentRenderPassDescriptor,
-        let indexBuffer = indexBuffer else { return }
+            let descriptor = view.currentRenderPassDescriptor else { return }
 
 
-        time +=  1 / Float(view.preferredFramesPerSecond)
-        let animateBy = abs(sin(time) / 2 + 0.5)
-        constant.animateBy = animateBy
-        let commandBuffer = commandQueue.makeCommandBuffer()
-        let commandEncoder =
-            commandBuffer?.makeRenderCommandEncoder(descriptor: descriptor)
-        commandEncoder?.setRenderPipelineState(pipelineState)
-        commandEncoder?.setVertexBuffer(vertexBuffer,
-                                        offset: 0, index: 0)
-        commandEncoder?.setVertexBytes(&constant, length: MemoryLayout<Constants>.stride, index: 1)
 
-        commandEncoder?.setFragmentBytes(&constant, length: MemoryLayout<Constants>.stride, index: 0)
-        commandEncoder?.drawIndexedPrimitives(type: .triangle, indexCount: indices.count, indexType: .uint16, indexBuffer: indexBuffer, indexBufferOffset: 0)
-        commandEncoder?.endEncoding()
-        commandBuffer?.present(drawable)
-        commandBuffer?.commit()
+        guard let commandBuffer = commandQueue.makeCommandBuffer() else { return }
+        guard let commandEncoder =
+            commandBuffer.makeRenderCommandEncoder(descriptor: descriptor) else { return }
+        commandEncoder.setRenderPipelineState(pipelineState)
+
+        let deltaTime =  1 / Float(view.preferredFramesPerSecond)
+        scene?.render(commandEncoder: commandEncoder, deltaTime: deltaTime)
+
+        commandEncoder.endEncoding()
+        commandBuffer.present(drawable)
+        commandBuffer.commit()
     }
 }
 
