@@ -39,7 +39,7 @@ class Plane: Node {
     ]
 
     var time: Float = 0
-    var constants = Constants()
+    var modelConstants = ModelConstants()
 
 
     private func buildBuffers(device: MTLDevice) {
@@ -48,36 +48,35 @@ class Plane: Node {
                                          options: [])
         indexBuffer = device.makeBuffer(bytes: indices, length: indices.count * MemoryLayout<UInt16>.size, options: [])
     }
-
-    override func render(commandEncoder: MTLRenderCommandEncoder, deltaTime: Float) {
-        super.render(commandEncoder: commandEncoder, deltaTime: deltaTime)
-        guard let indexBuffer = self.indexBuffer else { return }
-
-        time += deltaTime
-        let animateBy = abs(sin(time) / 2 + 0.5)
-        constants.animateBy = animateBy
-        commandEncoder.setRenderPipelineState(pipelineState)
-        commandEncoder.setVertexBuffer(vertexBuffer, offset: 0, index: 0)
-        commandEncoder.setVertexBytes(&constants, length: MemoryLayout<Constants>.stride, index: 1)
-        commandEncoder.setFragmentBytes(&constants, length: MemoryLayout<Constants>.stride, index: 0)
-
-        commandEncoder.setFragmentTexture(texture, index: 0)
-        if let mask = self.maskTexture {
-            commandEncoder.setFragmentTexture(mask, index: 1)
-        }
-        commandEncoder.drawIndexedPrimitives(type: .triangle,
-                                             indexCount: indices.count,
-                                             indexType: .uint16,
-                                             indexBuffer: indexBuffer,
-                                             indexBufferOffset: 0)
-    }
 }
 
 extension Plane: Renderable {
+    func doRender(commandEncoder: MTLRenderCommandEncoder, modelViewMatrix: matrix_float4x4) {
+        guard let indexBuffer = indexBuffer else { return }
+
+        let aspect = Float(750.0/1334.0)
+        let projectionMatrix = matrix_float4x4(projectionFov: radians(fromDegrees: 65),
+                                               aspect: aspect,
+                                               nearZ: 0.1,
+                                               farZ: 100)
+
+        modelConstants.modelViewMatrix = matrix_multiply(projectionMatrix, modelViewMatrix)
+
+        commandEncoder.setRenderPipelineState(pipelineState)
+
+        commandEncoder.setFragmentTexture(texture, index: 0)
+        commandEncoder.setFragmentTexture(maskTexture, index: 1)
+
+        commandEncoder.setVertexBuffer(vertexBuffer, offset: 0, index: 0)
+        commandEncoder.setVertexBytes(&modelConstants, length: MemoryLayout<ModelConstants>.stride, index: 1)
+
+        commandEncoder.drawIndexedPrimitives(type: .triangle, indexCount: indices.count, indexType: .uint16, indexBuffer: indexBuffer, indexBufferOffset: 0)
+
+    }
+
     var fragmentFunctionName: String {
         if texture != nil {
             if maskTexture != nil {
-                print("mask texture: \(maskTexture)")
                 return "masked_textured_fragment"
             }
             return "textured_fragment"

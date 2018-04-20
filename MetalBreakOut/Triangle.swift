@@ -30,13 +30,4 @@ class Triangle: Node {
                                          length: vertices.length,
                                          options: [])
     }
-
-    override func render(commandEncoder: MTLRenderCommandEncoder, deltaTime: Float) {
-        super.render(commandEncoder: commandEncoder, deltaTime: deltaTime)
-        
-        commandEncoder.setVertexBuffer(vertexBuffer, offset: 0, index: 0)
-        commandEncoder.setVertexBytes(&constants, length: MemoryLayout<Constants>.stride, index: 1)
-        commandEncoder.setFragmentBytes(&constants, length: MemoryLayout<Constants>.stride, index: 0)
-        commandEncoder.drawPrimitives(type: .triangle, vertexStart: 0, vertexCount: 1, instanceCount: 1)
-    }
 }

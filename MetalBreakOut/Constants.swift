@@ -7,8 +7,12 @@
 //
 
 import Foundation
-
+import simd
 
 struct Constants {
     var animateBy: Float = 0.0
+}
+
+struct ModelConstants {
+    var modelViewMatrix = matrix_identity_float4x4
 }
