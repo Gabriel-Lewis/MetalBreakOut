@@ -16,7 +16,7 @@ protocol Texturable {
 extension Texturable {
     func setTexture(device: MTLDevice, imageName: String?) -> MTLTexture? {
         guard let name = imageName else { return nil }
-        guard let url = Bundle.main.url(forResource: name, withExtension: "png") else { fatalError("fuck") }
+        guard let url = Bundle.main.url(forResource: name, withExtension: "png") else { return nil }
         let textureLoader = MTKTextureLoader(device: device)
         var tex: MTLTexture?
         do {

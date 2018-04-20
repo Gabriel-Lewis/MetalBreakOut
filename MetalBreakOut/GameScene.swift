@@ -10,26 +10,16 @@ import Foundation
 import MetalKit
 
 class GameScene: Scene {
-    var plane: Plane
-    var cube: Cube
+    let mushroom: Model
 
     override init(device: MTLDevice, size: CGSize) {
-        cube = Cube(device: device)
-        plane = Plane(device: device, imageName: "picture")
+        mushroom = Model(device: device, modelName: "mushroom")
         super.init(device: device, size: size)
-        add(childNode: cube)
-        add(childNode: plane)
-
-        let plane2 = Plane(device: device, imageName: "picture")
-        plane2.scale = float3(0.5)
-        plane2.position.y = 1.5
-        cube.add(childNode: plane2)
-
-        plane.position.z = -3
-        plane.position.y = -1.5
+        add(childNode: mushroom)
+        camera.position.z = -6
     }
 
     override func update(deltaTime: Float) {
-        cube.rotation.y += deltaTime
+        mushroom.rotation.x += deltaTime
     }
 }

@@ -10,13 +10,6 @@ import UIKit
 import MetalKit
 import SceneKit
 
-enum Colors {
-    static let wenderlichGreen = MTLClearColor(red: 0.0,
-                                               green: 0.4,
-                                               blue: 0.21,
-                                               alpha: 1.0)
-}
-
 class ViewController: UIViewController {
 
     override var prefersStatusBarHidden: Bool {
@@ -27,24 +20,21 @@ class ViewController: UIViewController {
         return true
     }
 
-    var metalView: MTKView {
-        return view as! MTKView
-    }
+    @IBOutlet weak var metalView: MTKView!
 
     var renderer: Renderer?
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         metalView.device = MTLCreateSystemDefaultDevice()
         guard let device = metalView.device else {
             fatalError("Device not created. Run on a physical device")
         }
 
-
-        metalView.clearColor =  Colors.wenderlichGreen
+        metalView.clearColor = .skyBlue
         metalView.depthStencilPixelFormat = .depth32Float
         renderer = Renderer(device: device)
         metalView.delegate = renderer
-        renderer?.scene = GameScene(device: device, size: view.bounds.size)
+        renderer?.scene = LandscapeScene(device: device, size: metalView.bounds.size)
     }
 }
