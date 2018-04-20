@@ -20,6 +20,8 @@
 		C07044E52086C9D90080CB22 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C07044E42086C9D90080CB22 /* Assets.xcassets */; };
 		C07044E82086C9D90080CB22 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C07044E62086C9D90080CB22 /* LaunchScreen.storyboard */; };
 		C07B113D208A60B100E02792 /* MatrixMath.swift in Sources */ = {isa = PBXBuildFile; fileRef = C07B113C208A60B100E02792 /* MatrixMath.swift */; };
+		C07B113F208A713800E02792 /* Primitive.swift in Sources */ = {isa = PBXBuildFile; fileRef = C07B113E208A713800E02792 /* Primitive.swift */; };
+		C07B1141208A72BA00E02792 /* Cube.swift in Sources */ = {isa = PBXBuildFile; fileRef = C07B1140208A72BA00E02792 /* Cube.swift */; };
 		C0CE751E2087F79500E4CCEE /* Shader.metal in Sources */ = {isa = PBXBuildFile; fileRef = C0CE751D2087F79500E4CCEE /* Shader.metal */; };
 		C0CE7522208920DE00E4CCEE /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0CE7521208920DE00E4CCEE /* Node.swift */; };
 		C0CE75262089217F00E4CCEE /* Plane.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0CE75252089217F00E4CCEE /* Plane.swift */; };
@@ -46,6 +48,8 @@
 		C07044E72086C9D90080CB22 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C07044E92086C9D90080CB22 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C07B113C208A60B100E02792 /* MatrixMath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatrixMath.swift; sourceTree = "<group>"; };
+		C07B113E208A713800E02792 /* Primitive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Primitive.swift; sourceTree = "<group>"; };
+		C07B1140208A72BA00E02792 /* Cube.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cube.swift; sourceTree = "<group>"; };
 		C0CE751D2087F79500E4CCEE /* Shader.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = Shader.metal; sourceTree = "<group>"; };
 		C0CE7521208920DE00E4CCEE /* Node.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Node.swift; sourceTree = "<group>"; };
 		C0CE75252089217F00E4CCEE /* Plane.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Plane.swift; sourceTree = "<group>"; };
@@ -155,6 +159,8 @@
 				C0CE7521208920DE00E4CCEE /* Node.swift */,
 				C0CE75252089217F00E4CCEE /* Plane.swift */,
 				C0CE752D208926E400E4CCEE /* Triangle.swift */,
+				C07B113E208A713800E02792 /* Primitive.swift */,
+				C07B1140208A72BA00E02792 /* Cube.swift */,
 			);
 			name = "Metal Node";
 			sourceTree = "<group>";
@@ -245,6 +251,7 @@
 				C0CE752C2089250700E4CCEE /* GameScene.swift in Sources */,
 				C036381720895E6500A407AC /* Texturable.swift in Sources */,
 				C07044E02086C9D80080CB22 /* ViewController.swift in Sources */,
+				C07B113F208A713800E02792 /* Primitive.swift in Sources */,
 				C07B113D208A60B100E02792 /* MatrixMath.swift in Sources */,
 				C07044DE2086C9D80080CB22 /* AppDelegate.swift in Sources */,
 				C00309F22087BCCD006509BD /* MetalRenderer.swift in Sources */,
@@ -256,6 +263,7 @@
 				C0CE75262089217F00E4CCEE /* Plane.swift in Sources */,
 				C0CE7528208921AD00E4CCEE /* Constants.swift in Sources */,
 				C036380C208952FC00A407AC /* Renderable.swift in Sources */,
+				C07B1141208A72BA00E02792 /* Cube.swift in Sources */,
 				C0CE752A208923B600E4CCEE /* Scene.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
