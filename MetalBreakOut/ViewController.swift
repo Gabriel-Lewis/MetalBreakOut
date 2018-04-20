@@ -19,6 +19,14 @@ enum Colors {
 
 class ViewController: UIViewController {
 
+    override var prefersStatusBarHidden: Bool {
+        return true
+    }
+
+    override func prefersHomeIndicatorAutoHidden() -> Bool {
+        return true
+    }
+
     var metalView: MTKView {
         return view as! MTKView
     }
@@ -31,6 +39,7 @@ class ViewController: UIViewController {
         guard let device = metalView.device else {
             fatalError("Device not created. Run on a physical device")
         }
+
 
         metalView.clearColor =  Colors.wenderlichGreen
         renderer = Renderer(device: device)
