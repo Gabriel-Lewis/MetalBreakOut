@@ -18,21 +18,30 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mtkView contentMode="scaleToFill" colorPixelFormat="BGRA8Unorm" depthStencilPixelFormat="Depth32Float" translatesAutoresizingMaskIntoConstraints="NO" id="2mO-2q-Phm">
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="5Ig-lz-DcD">
                                 <rect key="frame" x="0.0" y="20" width="375" height="647"/>
-                            </mtkView>
+                                <subviews>
+                                    <mtkView contentMode="scaleToFill" colorPixelFormat="BGRA8Unorm" depthStencilPixelFormat="Depth32Float" translatesAutoresizingMaskIntoConstraints="NO" id="afs-qo-Shp">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="323.5"/>
+                                    </mtkView>
+                                    <mtkView contentMode="scaleToFill" colorPixelFormat="BGRA8Unorm" depthStencilPixelFormat="Depth32Float" translatesAutoresizingMaskIntoConstraints="NO" id="N57-4j-90J">
+                                        <rect key="frame" x="0.0" y="323.5" width="375" height="323.5"/>
+                                    </mtkView>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="2mO-2q-Phm" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="BWD-h9-PWq"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="2mO-2q-Phm" secondAttribute="trailing" id="DhB-Bt-W2R"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="2mO-2q-Phm" secondAttribute="bottom" id="mTi-Xl-pc0"/>
-                            <constraint firstItem="2mO-2q-Phm" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="qf5-KR-bun"/>
+                            <constraint firstItem="5Ig-lz-DcD" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="6T5-RD-qvq"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="5Ig-lz-DcD" secondAttribute="trailing" id="PwK-s7-qQO"/>
+                            <constraint firstItem="5Ig-lz-DcD" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="RvI-ug-AMM"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="5Ig-lz-DcD" secondAttribute="bottom" id="iil-bz-Z9b"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
-                        <outlet property="metalView" destination="2mO-2q-Phm" id="kvW-GP-oqg"/>
+                        <outlet property="gameSceneView" destination="N57-4j-90J" id="Sxq-a8-1R3"/>
+                        <outlet property="metalView" destination="afs-qo-Shp" id="EyA-lI-896"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

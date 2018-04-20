@@ -20,21 +20,31 @@ class ViewController: UIViewController {
         return true
     }
 
+    let device = MTLCreateSystemDefaultDevice()
+
     @IBOutlet weak var metalView: MTKView!
+    @IBOutlet weak var gameSceneView: MTKView!
 
     var renderer: Renderer?
+    var renderer2: Renderer?
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        metalView.device = MTLCreateSystemDefaultDevice()
-        guard let device = metalView.device else {
-            fatalError("Device not created. Run on a physical device")
-        }
+
+        metalView.device = device
+        gameSceneView.device = device
 
         metalView.clearColor = .skyBlue
+        gameSceneView.clearColor = .wenderlichGreen
+        gameSceneView.depthStencilPixelFormat = .depth32Float
         metalView.depthStencilPixelFormat = .depth32Float
+        guard let device = self.device else { fatalError("failed to load device") }
         renderer = Renderer(device: device)
+        renderer2 = Renderer(device: device)
+
         metalView.delegate = renderer
+        gameSceneView.delegate = renderer2
         renderer?.scene = LandscapeScene(device: device, size: metalView.bounds.size)
+        renderer2?.scene = GameScene(device: device, size: gameSceneView.bounds.size)
     }
 }

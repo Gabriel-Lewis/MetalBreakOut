@@ -20,6 +20,6 @@ class GameScene: Scene {
     }
 
     override func update(deltaTime: Float) {
-        mushroom.rotation.x += deltaTime
+        mushroom.rotation.y += deltaTime
     }
 }
