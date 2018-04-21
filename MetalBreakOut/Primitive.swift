@@ -51,7 +51,7 @@ extension Primitive: Renderable {
         guard let indexBuffer = indexBuffer else { return }
 
         modelConstants.modelViewMatrix = modelViewMatrix
-
+      modelConstants.materialColor = materialColor
         commandEncoder.setRenderPipelineState(pipelineState)
 
         commandEncoder.setVertexBuffer(vertexBuffer, offset: 0, index: 0)
@@ -74,7 +74,7 @@ extension Primitive: Renderable {
             }
             return "textured_fragment"
         }
-        return "fragment_shader"
+        return "fragment_color"
     }
 
     var vertexFunctionName: String {

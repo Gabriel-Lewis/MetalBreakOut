@@ -34,6 +34,8 @@
 		C07B115D208A98C000E02792 /* sun.obj in Resources */ = {isa = PBXBuildFile; fileRef = C07B115C208A98C000E02792 /* sun.obj */; };
 		C07B115F208A9D3300E02792 /* Metal+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C07B115E208A9D3300E02792 /* Metal+Extension.swift */; };
 		C0BE8428208AB1540037EAA6 /* InstanceScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0BE8427208AB1540037EAA6 /* InstanceScene.swift */; };
+		C0BE842A208BF1E10037EAA6 /* grass.obj in Resources */ = {isa = PBXBuildFile; fileRef = C0BE8429208BF1E10037EAA6 /* grass.obj */; };
+		C0BE842C208BF1EA0037EAA6 /* Resources.rtf in Resources */ = {isa = PBXBuildFile; fileRef = C0BE842B208BF1EA0037EAA6 /* Resources.rtf */; };
 		C0C466E0208AA20D00C5C09C /* CrowdScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C466DF208AA20D00C5C09C /* CrowdScene.swift */; };
 		C0C466E2208AA31500C5C09C /* Float.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C466E1208AA31500C5C09C /* Float.swift */; };
 		C0C466E4208AA62000C5C09C /* Instance.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C466E3208AA62000C5C09C /* Instance.swift */; };
@@ -77,6 +79,8 @@
 		C07B115C208A98C000E02792 /* sun.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = sun.obj; sourceTree = "<group>"; };
 		C07B115E208A9D3300E02792 /* Metal+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Metal+Extension.swift"; sourceTree = "<group>"; };
 		C0BE8427208AB1540037EAA6 /* InstanceScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstanceScene.swift; sourceTree = "<group>"; };
+		C0BE8429208BF1E10037EAA6 /* grass.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = grass.obj; sourceTree = "<group>"; };
+		C0BE842B208BF1EA0037EAA6 /* Resources.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = Resources.rtf; sourceTree = "<group>"; };
 		C0C466DF208AA20D00C5C09C /* CrowdScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrowdScene.swift; sourceTree = "<group>"; };
 		C0C466E1208AA31500C5C09C /* Float.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Float.swift; sourceTree = "<group>"; };
 		C0C466E3208AA62000C5C09C /* Instance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Instance.swift; sourceTree = "<group>"; };
@@ -192,7 +196,9 @@
 		C07B114A208A955000E02792 /* Obj Models */ = {
 			isa = PBXGroup;
 			children = (
+				C0BE8429208BF1E10037EAA6 /* grass.obj */,
 				C07B115C208A98C000E02792 /* sun.obj */,
+				C0BE842B208BF1EA0037EAA6 /* Resources.rtf */,
 				C07B1153208A96EF00E02792 /* texturedCube */,
 				C07B1150208A96DA00E02792 /* humanFigure */,
 				C07B114B208A955C00E02792 /* Mushroom */,
@@ -313,7 +319,9 @@
 				C036382220896F2100A407AC /* picture-frame.png in Resources */,
 				C07B114E208A956600E02792 /* mushroom.png in Resources */,
 				C07B1157208A96F900E02792 /* texturedCube.obj in Resources */,
+				C0BE842A208BF1E10037EAA6 /* grass.obj in Resources */,
 				C07044E82086C9D90080CB22 /* LaunchScreen.storyboard in Resources */,
+				C0BE842C208BF1EA0037EAA6 /* Resources.rtf in Resources */,
 				C07B1152208A96E500E02792 /* humanFigure.obj in Resources */,
 				C036382120896F2100A407AC /* picture.png in Resources */,
 				C07B1159208A96F900E02792 /* texturedCube.blend in Resources */,

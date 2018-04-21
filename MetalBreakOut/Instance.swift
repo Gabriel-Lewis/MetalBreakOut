@@ -23,11 +23,9 @@ class Instance: Node {
 
         model = Model(device: device, modelName: modelName)
         super.init()
-        print(self.vertexFunctionName)
         name = modelName
         create(instancesCount: instances)
         makeBuffer(device: device)
-        print(self.vertexFunctionName)
         pipelineState = buildPipelineState(device: device)
     }
 
