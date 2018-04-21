@@ -33,6 +33,10 @@
 		C07B115B208A980400E02792 /* LandscapeScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = C07B115A208A980400E02792 /* LandscapeScene.swift */; };
 		C07B115D208A98C000E02792 /* sun.obj in Resources */ = {isa = PBXBuildFile; fileRef = C07B115C208A98C000E02792 /* sun.obj */; };
 		C07B115F208A9D3300E02792 /* Metal+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C07B115E208A9D3300E02792 /* Metal+Extension.swift */; };
+		C0BE8428208AB1540037EAA6 /* InstanceScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0BE8427208AB1540037EAA6 /* InstanceScene.swift */; };
+		C0C466E0208AA20D00C5C09C /* CrowdScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C466DF208AA20D00C5C09C /* CrowdScene.swift */; };
+		C0C466E2208AA31500C5C09C /* Float.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C466E1208AA31500C5C09C /* Float.swift */; };
+		C0C466E4208AA62000C5C09C /* Instance.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C466E3208AA62000C5C09C /* Instance.swift */; };
 		C0CE751E2087F79500E4CCEE /* Shader.metal in Sources */ = {isa = PBXBuildFile; fileRef = C0CE751D2087F79500E4CCEE /* Shader.metal */; };
 		C0CE7522208920DE00E4CCEE /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0CE7521208920DE00E4CCEE /* Node.swift */; };
 		C0CE75262089217F00E4CCEE /* Plane.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0CE75252089217F00E4CCEE /* Plane.swift */; };
@@ -72,6 +76,10 @@
 		C07B115A208A980400E02792 /* LandscapeScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandscapeScene.swift; sourceTree = "<group>"; };
 		C07B115C208A98C000E02792 /* sun.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = sun.obj; sourceTree = "<group>"; };
 		C07B115E208A9D3300E02792 /* Metal+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Metal+Extension.swift"; sourceTree = "<group>"; };
+		C0BE8427208AB1540037EAA6 /* InstanceScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstanceScene.swift; sourceTree = "<group>"; };
+		C0C466DF208AA20D00C5C09C /* CrowdScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrowdScene.swift; sourceTree = "<group>"; };
+		C0C466E1208AA31500C5C09C /* Float.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Float.swift; sourceTree = "<group>"; };
+		C0C466E3208AA62000C5C09C /* Instance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Instance.swift; sourceTree = "<group>"; };
 		C0CE751D2087F79500E4CCEE /* Shader.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = Shader.metal; sourceTree = "<group>"; };
 		C0CE7521208920DE00E4CCEE /* Node.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Node.swift; sourceTree = "<group>"; };
 		C0CE75252089217F00E4CCEE /* Plane.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Plane.swift; sourceTree = "<group>"; };
@@ -98,6 +106,7 @@
 			children = (
 				C00309F42087C5AB006509BD /* Array+Extension.swift */,
 				C07B115E208A9D3300E02792 /* Metal+Extension.swift */,
+				C0C466E1208AA31500C5C09C /* Float.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -127,6 +136,8 @@
 				C0CE7529208923B600E4CCEE /* Scene.swift */,
 				C0CE752B2089250700E4CCEE /* GameScene.swift */,
 				C07B115A208A980400E02792 /* LandscapeScene.swift */,
+				C0C466DF208AA20D00C5C09C /* CrowdScene.swift */,
+				C0BE8427208AB1540037EAA6 /* InstanceScene.swift */,
 			);
 			name = Scenes;
 			sourceTree = "<group>";
@@ -226,6 +237,7 @@
 				C07B1140208A72BA00E02792 /* Cube.swift */,
 				C07B1142208A77A300E02792 /* Camera.swift */,
 				C07B1146208A840400E02792 /* Model.swift */,
+				C0C466E3208AA62000C5C09C /* Instance.swift */,
 			);
 			name = "Metal Node";
 			sourceTree = "<group>";
@@ -324,6 +336,7 @@
 				C0CE752C2089250700E4CCEE /* GameScene.swift in Sources */,
 				C036381720895E6500A407AC /* Texturable.swift in Sources */,
 				C07044E02086C9D80080CB22 /* ViewController.swift in Sources */,
+				C0BE8428208AB1540037EAA6 /* InstanceScene.swift in Sources */,
 				C07B113F208A713800E02792 /* Primitive.swift in Sources */,
 				C07B113D208A60B100E02792 /* MatrixMath.swift in Sources */,
 				C07044DE2086C9D80080CB22 /* AppDelegate.swift in Sources */,
@@ -336,10 +349,13 @@
 				C07B115F208A9D3300E02792 /* Metal+Extension.swift in Sources */,
 				C0CE752E208926E400E4CCEE /* Triangle.swift in Sources */,
 				C0CE75262089217F00E4CCEE /* Plane.swift in Sources */,
+				C0C466E0208AA20D00C5C09C /* CrowdScene.swift in Sources */,
 				C0CE7528208921AD00E4CCEE /* Constants.swift in Sources */,
 				C036380C208952FC00A407AC /* Renderable.swift in Sources */,
+				C0C466E2208AA31500C5C09C /* Float.swift in Sources */,
 				C07B1141208A72BA00E02792 /* Cube.swift in Sources */,
 				C07B1147208A840400E02792 /* Model.swift in Sources */,
+				C0C466E4208AA62000C5C09C /* Instance.swift in Sources */,
 				C0CE752A208923B600E4CCEE /* Scene.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -32,19 +32,13 @@ class ViewController: UIViewController {
         super.viewDidAppear(animated)
 
         metalView.device = device
-        gameSceneView.device = device
 
         metalView.clearColor = .skyBlue
-        gameSceneView.clearColor = .wenderlichGreen
-        gameSceneView.depthStencilPixelFormat = .depth32Float
         metalView.depthStencilPixelFormat = .depth32Float
         guard let device = self.device else { fatalError("failed to load device") }
         renderer = Renderer(device: device)
-        renderer2 = Renderer(device: device)
-
+        renderer?.scene = InstanceScene(device: device, size: metalView.bounds.size)
+        gameSceneView.isHidden = true
         metalView.delegate = renderer
-        gameSceneView.delegate = renderer2
-        renderer?.scene = LandscapeScene(device: device, size: metalView.bounds.size)
-        renderer2?.scene = GameScene(device: device, size: gameSceneView.bounds.size)
     }
 }
