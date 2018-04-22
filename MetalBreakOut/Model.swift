@@ -108,7 +108,7 @@ extension Model: Renderable {
             if maskTexture != nil {
                 return "masked_textured_fragment"
             }
-            return "textured_fragment"
+            return "lit_textured_fragment"
         }
         return "fragment_color"
     }

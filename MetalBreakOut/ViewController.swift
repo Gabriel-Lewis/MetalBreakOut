@@ -33,11 +33,11 @@ class ViewController: UIViewController {
 
         metalView.device = device
 
-        metalView.clearColor = .skyBlue
+        metalView.clearColor = .wenderlichGreen
         metalView.depthStencilPixelFormat = .depth32Float
         guard let device = self.device else { fatalError("failed to load device") }
         renderer = Renderer(device: device)
-        renderer?.scene = LandscapeScene(device: device, size: metalView.bounds.size)
+        renderer?.scene = LightingScene(device: device, size: metalView.bounds.size)
         gameSceneView.isHidden = true
         metalView.delegate = renderer
     }
