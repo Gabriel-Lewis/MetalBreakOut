@@ -58,11 +58,14 @@ vertex VertexOut vertex_shader(const VertexIn vertexIn [[ stage_in ]],
     // Applies the models world space matrix to the passed in position
     vertexOut.position = matrix * vertexIn.position;
     vertexOut.color = vertexIn.color;
-    vertexOut.textureCoordinates = vertexIn.textureCoordinates;
     vertexOut.materialColor = modelConstants.materialColor;
+    vertexOut.textureCoordinates = vertexIn.textureCoordinates;
+    vertexOut.shininess = modelConstants.shininess;
+    vertexOut.specularIntensity = modelConstants.specularIntensity;
+    vertexOut.normal = modelConstants.normalMatrix * vertexIn.normal;
+
     vertexOut.eyePosition = (modelConstants.modelViewMatrix
                              * vertexIn.position).xyz;
-    vertexOut.normal = modelConstants.normalMatrix * vertexIn.normal;
     return vertexOut;
 }
 
@@ -81,6 +84,10 @@ vertex VertexOut vertex_instance_shader(const VertexIn vertexIn [[ stage_in ]],
     vertexOut.textureCoordinates = vertexIn.textureCoordinates;
     vertexOut.shininess = modelConstants.shininess;
     vertexOut.specularIntensity = modelConstants.specularIntensity;
+    vertexOut.normal = modelConstants.normalMatrix * vertexIn.normal;
+
+    vertexOut.eyePosition = (modelConstants.modelViewMatrix
+                             * vertexIn.position).xyz;
     return vertexOut;
 }
 

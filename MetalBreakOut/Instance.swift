@@ -69,6 +69,10 @@ extension Instance: Renderable {
         for node in nodes {
             pointer.pointee.modelViewMatrix = matrix_multiply(modelViewMatrix, node.modelMatrix)
             pointer.pointee.materialColor = node.materialColor
+            let normal = matrix_multiply(modelViewMatrix, node.modelMatrix).upperLeft3x3()
+            pointer.pointee.normalMatrix = normal
+            pointer.pointee.shininess = node.shininess
+            pointer.pointee.specularIntensity = node.specularIntensity
              pointer = pointer.advanced(by: 1)
         }
 
