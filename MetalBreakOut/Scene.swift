@@ -35,7 +35,6 @@ class Scene: Node {
     }
 
     private func setupCamera(size: CGSize) {
-//        camera.aspect = Float(size.width / size.height)
         camera.position.z = -6
         add(childNode: camera)
     }
