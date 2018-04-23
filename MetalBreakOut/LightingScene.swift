@@ -13,21 +13,22 @@ class LightingScene: Scene {
     var previousTouchLocation: CGPoint = .zero
     override init(device: MTLDevice, size: CGSize) {
         mushroom = Model(device: device, modelName: "mushroom")
+
         super.init(device: device, size: size)
+
+        mushroom.specularIntensity = 0.2
+        mushroom.shininess = 2.0
+        mushroom.position.y = -1
         add(childNode: mushroom)
-        setupLight()
+
+        light.color = float3(1, 1, 1)
+        light.ambientIntensity = 0.2
+        light.diffuseIntensity = 0.8
+        light.direction = float3(0, 0, -1)
     }
 
     override func update(deltaTime: Float) {
 
-    }
-
-    func setupLight() {
-        light.color = float3(1)
-        light.ambientIntensity = 0.2
-        light.diffuseIntensity = 0.8
-        light.direction = float3(0,0,-1)
-        light.ambientIntensity = 0.5
     }
 
     override func touchesBegan(_ view: UIView, touches: Set<UITouch>, with event: UIEvent?) {
