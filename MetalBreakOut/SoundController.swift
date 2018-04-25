@@ -31,7 +31,7 @@ class SoundController {
         return nil
     }
 
-    private func playPopEffect() {
+    func playPopEffect() {
         popEffect?.play()
     }
 }

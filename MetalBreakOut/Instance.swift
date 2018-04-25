@@ -39,6 +39,11 @@ class Instance: Node {
         }
     }
 
+    func remove(instance: Int) {
+        nodes.remove(at: instance)
+        instanceConstants.remove(at: instance)
+    }
+
     func makeBuffer(device: MTLDevice) {
         instanceBuffer = device.makeBuffer(length: instanceConstants.count * MemoryLayout<ModelConstants>.stride,
                                            options: [])

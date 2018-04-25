@@ -6,8 +6,8 @@
 //  Copyright © 2018 Gabriel Lewis. All rights reserved.
 //
 
-import Foundation
 import MetalKit
+import AVFoundation
 
 class GameScene: Scene {
 
@@ -17,6 +17,9 @@ class GameScene: Scene {
         static let bricksPerRow = 8
         static let bricksPerColumn = 8
     }
+
+    var ballVelocityX: Float = 0
+    var ballVelocityY: Float = 0
 
     let ball: Model
     let paddle: Model
@@ -51,6 +54,8 @@ class GameScene: Scene {
     }
 
     private func setupScene() {
+        ballVelocityX = 20
+        ballVelocityY = 15
         ball.position.x = GameConstants.gameWidth / 2
         ball.position.y = GameConstants.gameHeight * 0.1
         ball.materialColor = float4(0.5, 0.9, 0, 1)
@@ -87,13 +92,89 @@ class GameScene: Scene {
 
 
     override func update(deltaTime: Float) {
+        var bounced = false
+        var popped = false
         for brick in bricks.nodes {
             brick.rotation.y += .pi / 4 * deltaTime
             brick.rotation.z += .pi / 4 * deltaTime
         }
+        ball.position.x += ballVelocityX * deltaTime
+        ball.position.y += ballVelocityY * deltaTime
+
+        if ball.position.y > GameConstants.gameHeight {
+            ball.position.y = GameConstants.gameHeight
+            ballVelocityY = -ballVelocityY
+            bounced = true
+        }
+
+        if ball.position.x < 0 {
+            ball.position.x = 0
+            ballVelocityX = -ballVelocityX
+            bounced = true
+        }
+
+        if ball.position.x > GameConstants.gameWidth {
+            ball.position.x = GameConstants.gameWidth
+            ballVelocityX = -ballVelocityX
+            bounced = true
+        }
+
+        if ball.position.y < 0 {
+            ballVelocityY = -ballVelocityY
+            bounced = true
+        }
+
+        let ballRect = ball.boundingBox(camera.viewMatrix)
+        let paddleRect = paddle.boundingBox(camera.viewMatrix)
+
+        if ballRect.intersects(paddleRect) {
+            ballVelocityY = -ballVelocityY
+            bounced = true
+        }
+
+        for (index, brick) in bricks.nodes.enumerated() {
+            let brickRect = brick.boundingBox(camera.viewMatrix)
+            if ballRect.intersects(brickRect) {
+                bounced = true
+                bricks.remove(instance: index)
+                ballVelocityY = -ballVelocityY
+            }
+        }
+
+//        if bounced {
+//            let systemSoundID: SystemSoundID = 1110
+//            AudioServicesPlaySystemSound (systemSoundID)
+//        }
     }
 
     private func sceneOffset(height: Float, fov: Float) -> Float {
         return (height / 2) / tan(fov / 2)
+    }
+
+    override func touchesBegan(_ view: UIView, touches: Set<UITouch>, with event: UIEvent?) {
+        guard let touch = touches.first else { return }
+        previousTouchLocation = touch.location(in: view)
+    }
+
+
+    override func touchesMoved(_ view: UIView, touches: Set<UITouch>, with event: UIEvent?) {
+        guard let touch = touches.first else { return }
+        let touchLocation = touch.location(in: view)
+        let delta = CGPoint(x: touchLocation.x - previousTouchLocation.x,
+                            y: touchLocation.y - previousTouchLocation.y)
+
+        let deltaX = Float(delta.x) * (GameConstants.gameWidth / Float(size.width))
+
+        var newX = paddle.position.x + deltaX
+
+        newX = min(max(newX, paddle.width / 2 ), GameConstants.gameWidth - paddle.width / 2)
+        paddle.position.x = newX
+        previousTouchLocation = touchLocation
+    }
+
+    func endGame(win: Bool) {
+        let gameOverScene = GameOverScene(device: device, size: size)
+        gameOverScene.win = win
+        sceneDelegate?.transition(to: gameOverScene)
     }
 }

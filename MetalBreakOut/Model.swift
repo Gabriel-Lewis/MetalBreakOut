@@ -61,6 +61,8 @@ class Model: Node {
         let asset = MDLAsset(url: assetURL,
                              vertexDescriptor: descriptor,
                              bufferAllocator: bufferAllocator)
+        width = asset.boundingBox.maxBounds.x - asset.boundingBox.minBounds.x
+        height = asset.boundingBox.maxBounds.y - asset.boundingBox.minBounds.y
 
         do {
             meshes = try MTKMesh.newMeshes(asset: asset,

@@ -9,6 +9,10 @@
 import Foundation
 import MetalKit
 
+protocol SceneDelegate {
+    func transition(to scene: Scene)
+}
+
 class Scene: Node {
 
     var device: MTLDevice
@@ -16,6 +20,8 @@ class Scene: Node {
     var camera = Camera()
     var sceneConstants = SceneConstants()
     var light = Light()
+    var previousTouchLocation: CGPoint = .zero
+    var sceneDelegate: SceneDelegate?
 
     init(device: MTLDevice, size: CGSize) {
         self.device = device

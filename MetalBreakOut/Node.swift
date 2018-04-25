@@ -6,7 +6,6 @@
 //  Copyright © 2018 Gabriel Lewis. All rights reserved.
 //
 
-import Foundation
 import MetalKit
 
 class Node {
@@ -18,6 +17,8 @@ class Node {
     var materialColor = float4(1)
     var specularIntensity: Float = 1
     var shininess: Float = 1
+    var width: Float = 1.0
+    var height: Float = 1.0
 
     var modelMatrix: matrix_float4x4 {
         var matrix = matrix_float4x4(translationX: position.x, y: position.y, z: position.z)
@@ -43,6 +44,22 @@ class Node {
             renderable.doRender(commandEncoder: commandEncoder, modelViewMatrix: modelViewMatrix)
             commandEncoder.popDebugGroup()
         }
+    }
+
+    func boundingBox(_ parentModelViewMatrix: matrix_float4x4) -> CGRect {
+        let modelViewMatrix = matrix_multiply(parentModelViewMatrix, modelMatrix)
+
+        var lowerleft = float4(-self.width/2, -self.height/2, 0, 1)
+        lowerleft = matrix_multiply(modelViewMatrix, lowerleft)
+
+        var upperRight = float4(self.width/2, self.height/2, 0, 1)
+        upperRight = matrix_multiply(modelViewMatrix, upperRight)
+
+        let width = CGFloat(upperRight.x - lowerleft.x)
+        let height = CGFloat(upperRight.y - lowerleft.y)
+
+        let boundingBox = CGRect(x: CGFloat(lowerleft.x), y: CGFloat(lowerleft.y), width: width, height: height)
+        return boundingBox
     }
 }
 

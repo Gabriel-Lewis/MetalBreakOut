@@ -10,7 +10,6 @@ import MetalKit
 
 class LightingScene: Scene {
     let mushroom: Model
-    var previousTouchLocation: CGPoint = .zero
     override init(device: MTLDevice, size: CGSize) {
         mushroom = Model(device: device, modelName: "mushroom")
 

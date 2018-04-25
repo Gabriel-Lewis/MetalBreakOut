@@ -6,6 +6,20 @@
 	objectVersion = 50;
 	objects = {
 
+/* Begin PBXAggregateTarget section */
+		C003FCE6208FB5A100E07401 /* Test */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = C003FCE7208FB5A100E07401 /* Build configuration list for PBXAggregateTarget "Test" */;
+			buildPhases = (
+				C003FCEA208FB5A600E07401 /* ShellScript */,
+			);
+			dependencies = (
+			);
+			name = Test;
+			productName = Test;
+		};
+/* End PBXAggregateTarget section */
+
 /* Begin PBXBuildFile section */
 		C00309F22087BCCD006509BD /* MetalRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00309F12087BCCD006509BD /* MetalRenderer.swift */; };
 		C00309F52087C5AB006509BD /* Array+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00309F42087C5AB006509BD /* Array+Extension.swift */; };
@@ -49,6 +63,7 @@
 		C0966E48208E55420042B4BC /* pop.wav in Resources */ = {isa = PBXBuildFile; fileRef = C0966E46208E55420042B4BC /* pop.wav */; };
 		C0966E49208E55420042B4BC /* bulletstorm_bg_v1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C0966E47208E55420042B4BC /* bulletstorm_bg_v1.mp3 */; };
 		C0966E51208E5F7F0042B4BC /* SoundController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0966E50208E5F7F0042B4BC /* SoundController.swift */; };
+		C0966E59208E720D0042B4BC /* GameOverScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0966E58208E720D0042B4BC /* GameOverScene.swift */; };
 		C0BE8428208AB1540037EAA6 /* InstanceScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0BE8427208AB1540037EAA6 /* InstanceScene.swift */; };
 		C0BE842A208BF1E10037EAA6 /* grass.obj in Resources */ = {isa = PBXBuildFile; fileRef = C0BE8429208BF1E10037EAA6 /* grass.obj */; };
 		C0BE842C208BF1EA0037EAA6 /* Resources.rtf in Resources */ = {isa = PBXBuildFile; fileRef = C0BE842B208BF1EA0037EAA6 /* Resources.rtf */; };
@@ -111,6 +126,7 @@
 		C0966E46208E55420042B4BC /* pop.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = pop.wav; sourceTree = "<group>"; };
 		C0966E47208E55420042B4BC /* bulletstorm_bg_v1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = bulletstorm_bg_v1.mp3; sourceTree = "<group>"; };
 		C0966E50208E5F7F0042B4BC /* SoundController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundController.swift; sourceTree = "<group>"; };
+		C0966E58208E720D0042B4BC /* GameOverScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverScene.swift; sourceTree = "<group>"; };
 		C0BE8427208AB1540037EAA6 /* InstanceScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstanceScene.swift; sourceTree = "<group>"; };
 		C0BE8429208BF1E10037EAA6 /* grass.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = grass.obj; sourceTree = "<group>"; };
 		C0BE842B208BF1EA0037EAA6 /* Resources.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = Resources.rtf; sourceTree = "<group>"; };
@@ -177,6 +193,7 @@
 				C0C466DF208AA20D00C5C09C /* CrowdScene.swift */,
 				C0BE8427208AB1540037EAA6 /* InstanceScene.swift */,
 				C0BE842D208C03980037EAA6 /* LightingScene.swift */,
+				C0966E58208E720D0042B4BC /* GameOverScene.swift */,
 			);
 			name = Scenes;
 			sourceTree = "<group>";
@@ -362,6 +379,9 @@
 				LastUpgradeCheck = 0930;
 				ORGANIZATIONNAME = "Gabriel Lewis";
 				TargetAttributes = {
+					C003FCE6208FB5A100E07401 = {
+						CreatedOnToolsVersion = 9.3;
+					};
 					C07044D92086C9D80080CB22 = {
 						CreatedOnToolsVersion = 9.3;
 					};
@@ -381,6 +401,7 @@
 			projectRoot = "";
 			targets = (
 				C07044D92086C9D80080CB22 /* MetalBreakOut */,
+				C003FCE6208FB5A100E07401 /* Test */,
 			);
 		};
 /* End PBXProject section */
@@ -424,6 +445,22 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		C003FCEA208FB5A600E07401 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "periphery scan --project MetalBreakOut.xcodeproj/ --schemes MetalBreakOut --targets MetalBreakOut --format xcode";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		C07044D62086C9D80080CB22 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -449,6 +486,7 @@
 				C0CE752E208926E400E4CCEE /* Triangle.swift in Sources */,
 				C0CE75262089217F00E4CCEE /* Plane.swift in Sources */,
 				C0C466E0208AA20D00C5C09C /* CrowdScene.swift in Sources */,
+				C0966E59208E720D0042B4BC /* GameOverScene.swift in Sources */,
 				C0CE7528208921AD00E4CCEE /* Constants.swift in Sources */,
 				C036380C208952FC00A407AC /* Renderable.swift in Sources */,
 				C0C466E2208AA31500C5C09C /* Float.swift in Sources */,
@@ -482,6 +520,24 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		C003FCE8208FB5A100E07401 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = N4SPYPM5DG;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		C003FCE9208FB5A100E07401 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = N4SPYPM5DG;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 		C07044EA2086C9D90080CB22 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -635,6 +691,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		C003FCE7208FB5A100E07401 /* Build configuration list for PBXAggregateTarget "Test" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C003FCE8208FB5A100E07401 /* Debug */,
+				C003FCE9208FB5A100E07401 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		C07044D52086C9D80080CB22 /* Build configuration list for PBXProject "MetalBreakOut" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
